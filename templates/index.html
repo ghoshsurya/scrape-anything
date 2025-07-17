@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Scraper</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-xl px-4 py-8 bg-gray-800 rounded-2xl shadow-xl">
+        <h1 class="text-3xl font-bold mb-6 text-center">Amazon Product Scraper</h1>
+
+        <form method="POST" class="flex flex-col gap-4">
+            <input type="text" name="product" placeholder="Enter product name" required
+                   class="p-3 rounded bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+            <button type="submit" class="bg-purple-600 hover:bg-purple-700 transition text-white p-3 rounded font-semibold">
+                Search and Generate CSV
+            </button>
+        </form>
+
+        {% if count %}
+            <div class="mt-6 text-center">
+                <p class="text-green-400 mb-2">{{ count }} products found.</p>
+                <a href="{{ url_for('download', filename=file) }}"
+                   class="inline-block bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-white font-semibold">
+                   Download CSV
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
